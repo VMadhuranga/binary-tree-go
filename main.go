@@ -159,17 +159,19 @@ func (bt *bTNode) height() int {
 }
 
 func (bt *bTNode) min() int {
-	if bt.left == nil {
-		return bt.data
+	current := bt.left
+	for current.left != nil {
+		current = current.left
 	}
 
-	return bt.left.min()
+	return current.data
 }
 
 func (bt *bTNode) max() int {
-	if bt.right == nil {
-		return bt.data
+	current := bt.right
+	for current.right != nil {
+		current = current.right
 	}
 
-	return bt.right.max()
+	return current.data
 }
